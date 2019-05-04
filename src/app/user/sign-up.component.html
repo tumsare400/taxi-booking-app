@@ -1,0 +1,58 @@
+
+<br >
+<div class="mx-auto" style="width:400px;border-radius:10px;  background-color:black; opacity: 0.6;">
+    <h3 class="text-center text-light">Sign Up</h3>
+    <form class="form-horizontal" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="control-label col-sm-2 text-light" for="name">Name:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="name" placeholder="Enter Name" required
+                formControlName="firstName"
+                [ngClass]="{'is-invalid': submitted && f.firstName.errors }" >
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">FirstName is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2 text-light" for="email">Email:</label>
+            <div class="col-sm-12">
+                <input type="email" class="form-control" id="email" placeholder="Enter email" required
+                formControlName="email"
+                [ngClass]="{'is-invalid': submitted && f.email.errors }" >
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Emailis required</div>
+                    <div *ngIf="f.email.errors.email">Emailmust be a valid email address</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2 text-light" for="password">Password:</label>
+            <div class="col-sm-12">
+                <input type="password" class="form-control" id="password" placeholder="Enter Password" required
+                formControlName="password" 
+                [ngClass]="{'is-invalid': submitted && f.password.errors }"  />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Passwordis required</div>
+                    <div *ngIf="f.password.errors.minlength">Passwordmust be at least 6 characters</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-sm-10 text-light" for="mobileNumber">Mobile Number:</label>
+            <div class="col-sm-12">
+                <input type="tel" class="form-control" id="mobileNumber" pattern="/(6|7|8|9)\d{9}/"
+                 title="Enter Mobile number starting with a number between 6-9 and length should be 10" placeholder="Enter Mobile Number" required />
+            </div>
+        </div>
+
+        <button type="submit" class="btn active text-center text-dark" style="margin-left:40%; font-weight:bold;background-color: #e6b800"
+        [disabled]="loading"><a routerLink="/user/bookRide">Sign Up</a></button>
+       <br><br>
+    </form>
+</div>
+<br><br>
